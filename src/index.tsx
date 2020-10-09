@@ -38,10 +38,12 @@ export const Plyr = React.forwardRef<HTMLPlyrVideoElement, PlyrProps>(
       if (innerRef.current && source) {
         innerRef.current.plyr.source = source
       }
-
-      return () => innerRef?.current?.plyr?.destroy()
     }, [ref, source])
 
+
+    useEffect(() => {
+      return () => innerRef?.current?.plyr?.destroy()
+    }, [])
     return (
       <video
         ref={(innerRef as unknown) as MutableRefObject<HTMLVideoElement>}
